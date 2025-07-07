@@ -1,9 +1,9 @@
-package br.com.alura.bytebank;
+package ricardo.products.bytebank;
 
-import br.com.alura.bytebank.domain.RegraDeNegocioException;
-import br.com.alura.bytebank.domain.cliente.DadosCadastroCliente;
-import br.com.alura.bytebank.domain.conta.ContaService;
-import br.com.alura.bytebank.domain.conta.DadosAberturaConta;
+import ricardo.products.bytebank.domain.RegraDeNegocioException;
+import ricardo.products.bytebank.domain.cliente.DadosCadastroCliente;
+import ricardo.products.bytebank.domain.conta.ContaService;
+import ricardo.products.bytebank.domain.conta.DadosAberturaConta;
 
 import java.util.Scanner;
 

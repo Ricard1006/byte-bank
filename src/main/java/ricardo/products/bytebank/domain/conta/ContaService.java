@@ -1,7 +1,7 @@
-package br.com.alura.bytebank.domain.conta;
+package ricardo.products.bytebank.domain.conta;
 
-import br.com.alura.bytebank.domain.RegraDeNegocioException;
-import br.com.alura.bytebank.domain.cliente.Cliente;
+import ricardo.products.bytebank.domain.RegraDeNegocioException;
+import ricardo.products.bytebank.domain.cliente.Cliente;
 
 import java.math.BigDecimal;
 import java.util.HashSet;

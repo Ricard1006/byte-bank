@@ -1,4 +1,4 @@
-package br.com.alura.bytebank.domain.cliente;
+package ricardo.products.bytebank.domain.cliente;
 
 import java.time.LocalDate;
 

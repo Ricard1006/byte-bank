@@ -1,4 +1,4 @@
-package br.com.alura.bytebank;
+package ricardo.products.bytebank;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
