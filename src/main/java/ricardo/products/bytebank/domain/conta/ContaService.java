@@ -1,13 +1,21 @@
 package ricardo.products.bytebank.domain.conta;
 
+import ricardo.products.bytebank.ConnectionFactory;
 import ricardo.products.bytebank.domain.RegraDeNegocioException;
 import ricardo.products.bytebank.domain.cliente.Cliente;
 
 import java.math.BigDecimal;
+import java.sql.Connection;
 import java.util.HashSet;
 import java.util.Set;
 
 public class ContaService {
+
+    private ConnectionFactory connection;
+
+    public ContaService() {
+       this.connection = new ConnectionFactory();
+    }
 
     private Set<Conta> contas = new HashSet<>();
 
@@ -27,7 +35,7 @@ public class ContaService {
             throw new RegraDeNegocioException("Já existe outra conta aberta com o mesmo número!");
         }
 
-        contas.add(conta);
+        
     }
 
     public void realizarSaque(Integer numeroDaConta, BigDecimal valor) {
