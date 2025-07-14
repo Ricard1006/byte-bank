@@ -6,6 +6,8 @@ import ricardo.products.bytebank.domain.cliente.Cliente;
 
 import java.math.BigDecimal;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -34,8 +36,24 @@ public class ContaService {
         if (contas.contains(conta)) {
             throw new RegraDeNegocioException("Já existe outra conta aberta com o mesmo número!");
         }
+        String sql = "INSERT INTO conta (numero, saldo, cliente-nome, cliente _CPF, cliente_email)" +
+                "VALUES (?, ?, ?, ?, ?)";
+        Connection conn =connection.recuperarConexao();
 
-        
+        try {
+            PreparedStatement preparedStatement = conn.prepareStatement(sql);
+
+            preparedStatement.setInt(1, conta.getNumero());
+            preparedStatement.setBigDecimal(2, BigDecimal.ZERO);
+            preparedStatement.setString(3, dadosDaConta.dadosCliente().nome());
+            preparedStatement.setString(4, dadosDaConta.dadosCliente().cpf());
+            preparedStatement.setString(5, dadosDaConta.dadosCliente().email());
+
+            preparedStatement.execute();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void realizarSaque(Integer numeroDaConta, BigDecimal valor) {
