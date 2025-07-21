@@ -1,21 +1,28 @@
 package ricardo.products.bytebank;
 
+import com.zaxxer.hikari.HikariConfig;
+import com.zaxxer.hikari.HikariDataSource;
+
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConnectionFactory {
 
     public Connection recuperarConexao() {
-            String url = "jdbc:mysql://localhost:3306/ricardo123";
-            String usuario = "root";
-            String senha = "Ricardinho1006+";
-
-            try {
-                return DriverManager
-                        .getConnection(url, usuario, senha);
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
+        try {
+            return createDataSource().getConnection();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
+
+    private HikariDataSource createDataSource() {
+        HikariConfig config = new HikariConfig();
+        config.setJdbcUrl("jdbc:mysql://localhost:3306/byte_bank");
+        config.setUsername("root");
+        config.setPassword("root");
+        config.setMaximumPoolSize(10);
+
+        return new HikariDataSource(config);
+    }
+}
